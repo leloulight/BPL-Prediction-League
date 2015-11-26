@@ -12,6 +12,6 @@ use App\Fixtures;
 class FixtureController extends Controller
 {
     public function show() {
-        //return view('home')->with($data);
+        return view('home');
     }
 }

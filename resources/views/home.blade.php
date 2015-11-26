@@ -39,10 +39,7 @@
             <div class="content">
                 <div class="title">Home</div>
                 <ul>
-                    @foreach($fixtures as $fixture)
-                        <?php echo "<pre>"; ?>
-                        <?php var_dump($fixture); ?>
-                    @endforeach
+                    FIXTURES GO HERE
                 </ul>
             </div>
         </div>
