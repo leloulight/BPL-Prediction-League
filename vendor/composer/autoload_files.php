@@ -15,4 +15,5 @@ return array(
     '9b24cdf6705c981dc519077514baadf4' => $vendorDir . '/danielstjules/stringy/src/Create.php',
     '8228127a88ff67cb5daa8ca7907cf435' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
     '9bfc7149f9758d59054ff388ac6d30d2' => $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
+    '8c9698b305e308ed34201edf1f3c1e48' => $vendorDir . '/illuminate/html/helpers.php',
 );
