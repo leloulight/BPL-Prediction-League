@@ -3,7 +3,7 @@
     <head>
         <title>Laravel</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+       <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
         <style>
             html, body {
@@ -21,7 +21,6 @@
 
             .container {
                 text-align: center;
-                display: table-cell;
                 vertical-align: middle;
             }
 
@@ -31,14 +30,20 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 52px;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Bareface Premier League</div>
+                <div class="title">Home</div>
+                <ul>
+                    @foreach($fixtures as $fixture)
+                        <?php echo "<pre>"; ?>
+                        <?php var_dump($fixture); ?>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </body>
