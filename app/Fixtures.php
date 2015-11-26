@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Fixtures extends Model
 {
@@ -13,17 +14,26 @@ class Fixtures extends Model
         self::$token = env('FIXTURE_API_TOKEN', '');
     }
 
-    public static function get($url) {
+    public static function initialInsert($url) {
         $url = self::$uri . $url;
-
         $reqPrefs['http']['method'] = 'GET';
         $reqPrefs['http']['header'] = 'X-Auth-Token: ' . self::$token . '';
 
         $stream_context = stream_context_create($reqPrefs);
+
         $response = file_get_contents($url, false, $stream_context);
+        $fixtures = json_decode($response);
 
-        $data = json_decode($response);
-
-        return $data;
+        foreach($fixtures->fixtures as $fixture) {
+            DB::table('fixtures')->insert(array(
+                'matchdayID' => $fixture->matchday,
+                'homeTeam' => $fixture->homeTeamName,
+                'awayTeam' => $fixture->awayTeamName,
+                'status' => $fixture->status,
+                'fixtureTime' => $fixture->date,
+                'goalsHome' => $fixture->result->goalsHomeTeam,
+                'goalsAway' => $fixture->result->goalsAwayTeam
+            ));
+        }
     }
 }

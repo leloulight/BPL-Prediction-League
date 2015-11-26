@@ -12,7 +12,6 @@ use App\Fixtures;
 class FixtureController extends Controller
 {
     public function show() {
-        $data['fixtures'] = Fixtures::get('v1/soccerseasons/398/fixtures');
-        return view('home')->with($data);
+        //return view('home')->with($data);
     }
 }
