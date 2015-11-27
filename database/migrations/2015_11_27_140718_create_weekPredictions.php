@@ -15,6 +15,7 @@ class CreateWeekPredictions extends Migration
         Schema::create('weekPredictions', function(BluePrint $table) {
             $table->increments('id');
             $table->string('userEmail');
+            $table->integer('matchdayID')->default(14);
             $table->string('0');
             $table->string('1');
             $table->string('2');
