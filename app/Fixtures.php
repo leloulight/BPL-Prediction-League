@@ -14,6 +14,20 @@ class Fixtures extends Model
         self::$token = env('FIXTURE_API_TOKEN', '');
     }
 
+    public static function getPrevious() {
+
+        $fixtures = array();
+        for($i = 38; $i >= 0; $i--) {
+            $matchday =  DB::table('fixtures')->where('status', 'FINISHED')->where('matchdayID', $i)->get();
+
+            if(!empty($matchday)) {
+                $fixtures[] = $matchday;
+            }
+        }
+
+        return $fixtures;
+    }
+
     public static function initialInsert($url) {
         $url = self::$uri . $url;
         $reqPrefs['http']['method'] = 'GET';
@@ -25,7 +39,7 @@ class Fixtures extends Model
         $fixtures = json_decode($response);
 
         foreach($fixtures->fixtures as $fixture) {
-            DB::table('fixtures')->insert(array(
+            DB::table('fixtures')->insertGetId(array(
                 'matchdayID' => $fixture->matchday,
                 'homeTeam' => $fixture->homeTeamName,
                 'awayTeam' => $fixture->awayTeamName,

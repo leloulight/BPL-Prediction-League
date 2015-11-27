@@ -16,11 +16,19 @@ View::composer('*', function($view) {
     View::share('view_name', $view->getName());  
 });
 
+//Home route
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Initial import of the fixtures
+Route::get('/importfixtures', 'FixtureController@importDB');
+
+//Logged in, dashboard
 Route::get('/home', 'FixtureController@show');
+
+//Previous fixtures listing
+Route::get('/previous', 'FixtureController@previous');
 
 Route::controllers([
     'auth'     => 'Auth\AuthController',

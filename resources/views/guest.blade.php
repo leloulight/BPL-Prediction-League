@@ -8,16 +8,7 @@
 </head>
 <body class="{{ $view_name }}">
     <div class="container">
-        <div class="col-md-4">
-            <ul class="nav nav-pills nav-stacked">
-              <li role="presentation"><a href="{{ URL::to('/home') }}">Home</a></li>
-              <li role="presentation"><a href="{{ URL::to('/previous') }}">Previous Fixtures</a></li>
-              <li role="presentation"><a href="{{ URL::to('/current') }}">This Week</a></li>
-            </ul>
-        </div>
-        <div class="col-md-8">
             @yield('content')
-        </div>
     </div>
 
   <footer>
