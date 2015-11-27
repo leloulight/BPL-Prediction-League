@@ -13,6 +13,23 @@ class Fixtures extends Model
     public function __construct() {
         self::$token = env('FIXTURE_API_TOKEN', '');
     }
+    
+    public static function getCurrent() {
+        $matchday = DB::table('fixtures')->where('status', 'TIMED')->take(10)->get();
+        
+        return $matchday;
+    }
+
+    public static function submitPredictions($predictions, $userEmail) {
+
+        $gameColumn = 0;
+        foreach($predictions as $key => $value) {
+            DB::table('weekPredictions')
+                ->where('userEmail', $userEmail)
+                ->update(array($gameColumn => $value));
+            $gameColumn++; 
+        }
+    }
 
     public static function getPrevious() {
 

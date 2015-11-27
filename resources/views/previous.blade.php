@@ -15,7 +15,7 @@
             
             <tbody>
                 @foreach($matchday as $game)
-                    <tr>
+                    <tr class="{{ $game->winner }}">
                         <td class="col-md-1">{{ $game->goalsHome }}</td>
                         <td class="col-md-4">{{ $game->homeTeam }}</td>
                         <td class="col-md-2">vs</td>

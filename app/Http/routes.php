@@ -30,6 +30,10 @@ Route::get('/home', 'FixtureController@show');
 //Previous fixtures listing
 Route::get('/previous', 'FixtureController@previous');
 
+//Current fixtures
+Route::get('/current', 'FixtureController@current');
+Route::post('/current', 'FixtureController@submitPredictions');
+
 Route::controllers([
     'auth'     => 'Auth\AuthController',
     'password' => 'Auth\PasswordController'

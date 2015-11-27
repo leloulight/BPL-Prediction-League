@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use DB;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -56,6 +57,10 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        DB::table('weekPredictions')->insert(array(
+            'userEmail' => $data['email']
+        ));
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
