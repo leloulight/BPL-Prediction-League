@@ -50,7 +50,7 @@ class Kernel extends ConsoleKernel
                                 //User Predicted correctly.
                                 //Give them 3 points
                                 DB::table('userTable')
-                                    ->where('username', $prediction->userEmail)
+                                    ->where('userEmail', $prediction->userEmail)
                                     ->increment('points', 3);
                             }
                         } else if($fixture->awayTeam == $prediction->$userPredCount) {
@@ -59,7 +59,7 @@ class Kernel extends ConsoleKernel
                                 //User was correct
                                 //Give them 3 points
                                 DB::table('userTable')
-                                    ->where('username', $prediction->userEmail)
+                                    ->where('userEmail', $prediction->userEmail)
                                     ->increment('points', 3);
                             
                             } 
@@ -70,26 +70,11 @@ class Kernel extends ConsoleKernel
                                 //User was correct
                                 //Give them 3 points
                                 DB::table('userTable')
-                                    ->where('username', $prediction->userEmail)
+                                    ->where('userEmail', $prediction->userEmail)
                                     ->increment('points', 1);
                             }
                         }
 
-                        DB::table('weekPredictions')
-                            ->where('userEmail', $prediction->userEmail)
-                            ->increment('matchdayID', 1)
-                            ->update(array(
-                                '0' => NULL,
-                                '1' => NULL,
-                                '2' => NULL,
-                                '3' => NULL,
-                                '4' => NULL,
-                                '5' => NULL,
-                                '6' => NULL,
-                                '7' => NULL,
-                                '8' => NULL,
-                                '9' => NULL,
-                            ));
                         $userPredCount++;
                     }
                 }
