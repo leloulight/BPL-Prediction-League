@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Input;
 use Auth;
+use DB;
 
 use App\Fixtures;
 
@@ -19,6 +20,7 @@ class FixtureController extends Controller
     }
 
     public function show() {
+
         return view('home');
     }
 

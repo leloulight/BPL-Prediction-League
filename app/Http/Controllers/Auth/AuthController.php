@@ -61,6 +61,12 @@ class AuthController extends Controller
             'userEmail' => $data['email']
         ));
 
+        DB::table('userTable')
+            ->insert(array(
+                'userEmail' => $data['email'],
+                'points'    => 0
+            ));
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

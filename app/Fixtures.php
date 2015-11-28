@@ -27,7 +27,9 @@ class Fixtures extends Model
             if($gameColumn <= 9) {
                 DB::table('weekPredictions')
                     ->where('userEmail', $userEmail)
-                    ->update(array($gameColumn => $value));
+                    ->update(array(
+                        $gameColumn => $value,
+                    ));
             }
             $gameColumn++; 
         }
